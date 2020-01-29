@@ -1,0 +1,14 @@
+<! home.ejs>
+
+<%- include("partials/header") -%>
+
+<h2>Blog</h2>
+<p><i><%= homeIntro %> </i></p>
+
+  <% posts.forEach(function(post) {  %>
+    <% console.log(post.title); %>
+    <br><h4><b><%= post.title  %></b></h4>
+    <p><%= post.content  %><br></p>
+  <% }) %>
+
+<%- include("partials/footer") -%>

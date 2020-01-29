@@ -1,0 +1,17 @@
+<! compose.ejs>
+
+  <%- include("partials/header") -%>
+
+  <h1>compose</h1>
+  <form class="" action="/compose" method="post" placeholder="new blog post" autocomplete="off">
+    <div class="form-group">
+      <label for="postTitle">title</label>
+      <input type="text" name="postTitle" id="postTitle" class="form-control" placeholder="enter post title"><br>
+      <label for="postBody">content</label>
+      <textarea name="postBody" id="postBody" class="form-control" rows="5" cols="30" placeholder="enter post content"></textarea>
+    </div>
+    <button type="submit" name="button" class="btn btn-primary">publish</button>
+  </form>
+
+
+  <%- include("partials/footer") -%>
