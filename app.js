@@ -28,23 +28,26 @@ app.get("/contact", function(req,res) {
 app.get("/compose", function(req,res) {
   res.render("compose")
 });
-app.get('/posts/:postId', function (req, res) {
-  console.log(req.params.postId)
-
-})
+app.get('/posts/:postName', function (req, res) {
+  // console.log(req.params.postName)
+  const requestedTitle = req.params.postName;
+  posts.forEach(function(post){
+    const storedTitle = post.title;
+    if (storedTitle === requestedTitle){
+      console.log("Match found!");
+    }
+  });
+});
 
 app.post("/compose", function(req,res) {
   // let post = req.body.postTitle + "\n" + req.body.postBody;
-
   const post = {
     title: req.body.postTitle,
     content: req.body.postBody
   };
-
   posts.push(post);
   res.redirect("/");
   //console.log(posts);
-
 });
 
 
