@@ -18,7 +18,9 @@ let posts = [];
 
 // create home route
 app.get("/", function(req,res) {
-  res.render("home", {homeIntro: homeStartingContent, posts: posts})
+  res.render("home", {
+    homeIntro: homeStartingContent,
+    posts: posts})
 });
 app.get("/about", function(req,res) {
   res.render("about", {aboutIntro: aboutContent})
@@ -29,7 +31,6 @@ app.get("/contact", function(req,res) {
 app.get("/compose", function(req,res) {
   res.render("compose")
 });
-
 
 app.post("/compose", function(req,res) {
   // let post = req.body.postTitle + "\n" + req.body.postBody;
@@ -45,16 +46,14 @@ app.post("/compose", function(req,res) {
 app.get('/posts/:postName', function (req, res) {
   //const requestedTitle = req.params.postName;
   const requestedTitle = _.lowerCase(req.params.postName);
+
   posts.forEach(function(post){
     const storedTitle = _.lowerCase(post.title);
     if (storedTitle === requestedTitle){
-      console.log("Match found!");
-    } else {
-      console.log("No match found.");
-    }
-  });
+      // console.log("Match found!");
+      res.render("post", {title: post.title, content: post.content})
+    }});
 });
-
 
 app.listen(process.env.PORT || 3100, function() {
     console.log('Server running on port 3100 \nurl localhost:3100')
