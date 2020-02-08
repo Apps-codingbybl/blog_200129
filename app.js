@@ -32,9 +32,11 @@ app.get("/compose", function(req,res) {
 });
 
 app.post("/compose", function(req,res) {
+
   const post = {
     title: req.body.postTitle,
-    content: req.body.postBody
+    content: req.body.postBody,
+    published: req.body.field
   };
   posts.push(post);
   res.redirect("/");
