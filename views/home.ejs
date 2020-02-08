@@ -3,12 +3,14 @@
 <%- include("partials/header") -%>
 
 <h2>Blog</h2>
-<p><i><%= homeIntro %> </i></p>
+<p><i><%= homeIntro %> </i></p><br>
 
   <% posts.forEach(function(post) {  %>
-    <% console.log(post.title); %>
-    <br><h4><b><%= post.title  %></b></h4>
-    <p><%= post.content  %><br></p>
+    <h4><%= post.title  %></h4>
+    <p>
+      <%= post.content.substring(0,100) + " ... " %><br>
+      <a href="/posts/<%= post.title %>">Read more</a>
+    </p><br>
   <% }) %>
 
 <%- include("partials/footer") -%>
